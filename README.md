@@ -14,7 +14,7 @@ This repo is meant to be used as a starting point for a user's own configuration
 ### Self configuration
 
 ```text
-<leader>gt to open github desktop on current git root.
+<leader>gd to open github desktop on current git root.
 
 <leader>lf to trigger LSP formatting.
 

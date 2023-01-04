@@ -20,11 +20,6 @@ local function get_git_root()
     return vim.fn.fnamemodify(dot_git_path, ":h")
 end
 
-vim.keymap.set('n', '<leader>gt', function ()
-  print(get_git_root())
-  vim.cmd('!github ' .. get_git_root())
-end)
-
 require('packer').startup(function(use)
   -- Package manager
   use 'wbthomason/packer.nvim'
@@ -422,6 +417,14 @@ mason_lspconfig.setup_handlers {
     }
   end,
 }
+
+-- github desktop
+vim.keymap.set('n', '<leader>gd', function ()
+  print(get_git_root())
+  vim.cmd('!github ' .. get_git_root())
+end, { desc = '[G]ithub [D]esktop' })
+
+
 
 -- Turn on lsp status information
 require('fidget').setup()
