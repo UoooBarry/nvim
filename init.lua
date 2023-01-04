@@ -420,9 +420,8 @@ mason_lspconfig.setup_handlers {
 
 -- github desktop
 vim.keymap.set('n', '<leader>gd', function ()
-  print(get_git_root())
-  vim.cmd('!github ' .. get_git_root())
-end, { desc = '[G]ithub [D]esktop' })
+  vim.cmd('silent! !github ' .. get_git_root())
+end, { desc = '[G]ithub [D]esktop', silent = true })
 
 
 
