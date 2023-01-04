@@ -11,6 +11,16 @@ Kickstart.nvim targets *only* the latest ['stable'](https://github.com/neovim/ne
 
 This repo is meant to be used as a starting point for a user's own configuration; remove the things you don't use and add what you miss. Please refrain from leaving comments about enabling / disabling particular languages out of the box.
 
+### Self configuration
+
+```text
+<leader>gt to open github desktop on current git root.
+
+<leader>lf to trigger LSP formatting.
+
+:Ag [text] to search content in the current workspace.
+```
+
 ### Installation
 
 * Backup your previous configuration
