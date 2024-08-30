@@ -68,23 +68,22 @@ require('packer').startup(function(use)
     "aserowy/tmux.nvim",
     config = function() return require("tmux").setup() end
   })
-  use({ 'gen740/SmoothCursor.nvim',
-    config = function()
-      require('smoothcursor').setup()
-    end
-  })
   use 'APZelos/blamer.nvim' -- Gitblame
   use 'airblade/vim-rooter'
+  use ({
+    'declancm/cinnamon.nvim',
+    config = function ()
+      require("cinnamon").setup {
+      -- Enable all provided keymaps
+        keymaps = {
+          basic = true,
+          extra = true,
+        },
+      }
+      end
+  })
 
-  use { "catppuccin/nvim", as = "catppuccin", config = function ()
-    require("catppuccin").setup({
-     flavour = "frappe", -- latte, frappe, macchiato, mocha
-     background = { -- :h background
-      light = "latte",
-      dark = "frappe",
-     },
-    })
-  end } -- Catppuccin theme
+  use { "catppuccin/nvim", as = "catppuccin" }
   use { "rose-pine/neovim" } -- RosePine
   use 'AlexvZyl/nordic.nvim' -- Nordic theme
 
@@ -123,6 +122,11 @@ require("nvim-tree").setup({
     enable = true,
     update_root = true
   },
+  actions = {
+    open_file = {
+      quit_on_open = true
+    }
+  }
 })
 -- When we are bootstrapping a configuration, it doesn't
 -- make sense to execute the rest of the init.lua.
@@ -176,7 +180,7 @@ vim.wo.signcolumn = 'yes'
 
 -- Set colorscheme
 vim.o.termguicolors = true
-vim.cmd [[colorscheme catppuccin]]
+vim.cmd [[colorscheme catppuccin-macchiato]]
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
