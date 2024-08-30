@@ -7,8 +7,6 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   vim.cmd [[packadd packer.nvim]]
 end
 
--- NvimTree setup
-
 -- github desktop
 local function get_git_root()
     local dot_git_path = vim.fn.finddir(".git", ".;")
@@ -39,11 +37,9 @@ require('packer').startup(function(use)
     requires = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
   }
 
-  use { -- Highlight, edit, and navigate code
+  use {
     'nvim-treesitter/nvim-treesitter',
-    run = function()
-      pcall(require('nvim-treesitter.install').update { with_sync = true })
-    end,
+    run = ':TSUpdate',
   }
 
   -- fzf lua
@@ -68,8 +64,29 @@ require('packer').startup(function(use)
   use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
   use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
   use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
+  use({
+    "aserowy/tmux.nvim",
+    config = function() return require("tmux").setup() end
+  })
+  use({ 'gen740/SmoothCursor.nvim',
+    config = function()
+      require('smoothcursor').setup()
+    end
+  })
+  use 'APZelos/blamer.nvim' -- Gitblame
+  use 'airblade/vim-rooter'
 
-  use { "catppuccin/nvim", as = "catppuccin" } -- Catppuccin theme
+  use { "catppuccin/nvim", as = "catppuccin", config = function ()
+    require("catppuccin").setup({
+     flavour = "frappe", -- latte, frappe, macchiato, mocha
+     background = { -- :h background
+      light = "latte",
+      dark = "frappe",
+     },
+    })
+  end } -- Catppuccin theme
+  use { "rose-pine/neovim" } -- RosePine
+  use 'AlexvZyl/nordic.nvim' -- Nordic theme
 
   -- Fuzzy Finder (files, lsp, etc)
   use { 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = { 'nvim-lua/plenary.nvim' } }
@@ -79,6 +96,14 @@ require('packer').startup(function(use)
 
   -- Telescope Ag command
   use({ "kelly-lin/telescope-ag", requires = { { "nvim-telescope/telescope.nvim" } } })
+
+  use { 'nvim-tree/nvim-tree.lua', config = function ()
+    require("nvim-tree").setup({
+      update_focused_file = {
+	      enable = true,
+      },
+    })
+  end }
 
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, 'custom.plugins')
@@ -91,6 +116,14 @@ require('packer').startup(function(use)
   end
 end)
 
+require("nvim-tree").setup({
+  sync_root_with_cwd = true,
+  respect_buf_cwd = true,
+  update_focused_file = {
+    enable = true,
+    update_root = true
+  },
+})
 -- When we are bootstrapping a configuration, it doesn't
 -- make sense to execute the rest of the init.lua.
 --
@@ -115,6 +148,7 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
+vim.o.scrolloff = 999
 -- Set highlight on search
 vim.o.hlsearch = true
 
@@ -154,6 +188,8 @@ vim.o.completeopt = 'menuone,noselect'
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+vim.g.blamer_enabled = true -- enable git blamer
+
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
@@ -189,10 +225,17 @@ require('Comment').setup()
 
 -- Enable `lukas-reineke/indent-blankline.nvim`
 -- See `:help indent_blankline.txt`
-require('indent_blankline').setup {
-  char = '┊',
-  show_trailing_blankline_indent = false,
+require('ibl').setup {
+ indent = {
+   char = '┊'
+ }
 }
+-- require('indent_blankline').setup {
+--  indent = {
+--   show_trailing_blankline_indent = false,
+--  char = '┊'
+--  }
+--}
 
 -- Gitsigns
 -- See `:help gitsigns.txt`
@@ -244,7 +287,8 @@ vim.keymap.set('n', '<leader>/', function()
 end, { desc = '[/] Fuzzily search in current buffer]' })
 
 vim.keymap.set('n', '<leader>sf', function ()
-  vim.cmd('FZF')
+ -- vim.cmd('FZF')
+  require('telescope.builtin').find_files()
 end , { desc = '[S]earch [F]iles' })
 vim.keymap.set('n', '<leader>sgf', require('telescope.builtin').git_files, { desc = '[S]earch [G]it [F]iles' })
 vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
@@ -356,7 +400,7 @@ local on_attach = function(_, bufnr)
   nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
   nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
   nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
-  nmap('<leader>wl', function()
+  nmap('<leader>ll', function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, '[W]orkspace [L]ist Folders')
 
@@ -454,6 +498,10 @@ end, { desc = 'Goto tab 6' })
 vim.keymap.set('n', '<C-7>', function()
   require('bufferline.api').goto_buffer(7)
 end, { desc = 'Goto tab 7' })
+
+vim.keymap.set('n', '<leader>tt', function()
+  vim.cmd('NvimTreeToggle')
+end, { desc = '[T]oogle[T]ree' })
 
 -- linter quick fix
 vim.keymap.set('n', '<leader>lf', function ()
