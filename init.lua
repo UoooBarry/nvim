@@ -47,6 +47,9 @@ require('packer').startup(function(use)
     'nvim-tree/nvim-web-devicons'
   }
 
+  -- terminal
+  use "numToStr/FTerm.nvim"
+
   use { 'junegunn/fzf', run = './install --bin', }
 
   use { -- Additional text objects via treesitter
@@ -69,7 +72,6 @@ require('packer').startup(function(use)
     config = function() return require("tmux").setup() end
   })
   use 'APZelos/blamer.nvim' -- Gitblame
-  use 'airblade/vim-rooter'
   use ({
     'declancm/cinnamon.nvim',
     config = function ()
@@ -115,19 +117,6 @@ require('packer').startup(function(use)
   end
 end)
 
-require("nvim-tree").setup({
-  sync_root_with_cwd = true,
-  respect_buf_cwd = true,
-  update_focused_file = {
-    enable = true,
-    update_root = true
-  },
-  actions = {
-    open_file = {
-      quit_on_open = true
-    }
-  }
-})
 -- When we are bootstrapping a configuration, it doesn't
 -- make sense to execute the rest of the init.lua.
 --
@@ -511,6 +500,13 @@ end, { desc = '[T]oogle[T]ree' })
 vim.keymap.set('n', '<leader>lf', function ()
   vim.cmd('Format')
 end, { noremap=true, silent=true })
+
+vim.keymap.set('n', '<C-i>', function ()
+  require("FTerm").toggle()
+end)
+vim.keymap.set('t', '<C-i>', function ()
+  require("FTerm").toggle()
+end)
 
 -- Turn on lsp status information
 require('fidget').setup()
