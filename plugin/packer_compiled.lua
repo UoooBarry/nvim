@@ -106,7 +106,7 @@ _G.packer_plugins = {
     url = "https://github.com/catppuccin/nvim"
   },
   ["cinnamon.nvim"] = {
-    config = { "\27LJ\2\ng\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\fkeymaps\1\0\1\fkeymaps\0\1\0\2\nbasic\2\nextra\2\nsetup\rcinnamon\frequire\0" },
+    config = { "\27LJ\2\ng\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\fkeymaps\1\0\1\fkeymaps\0\1\0\2\nextra\2\nbasic\2\nsetup\rcinnamon\frequire\0" },
     loaded = true,
     path = "/Users/barry/.local/share/nvim/site/pack/packer/start/cinnamon.nvim",
     url = "https://github.com/declancm/cinnamon.nvim"
@@ -120,6 +120,12 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/barry/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
+  },
+  ["everforest-nvim"] = {
+    config = { "\27LJ\2\n8\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\15everforest\frequire\0" },
+    loaded = true,
+    path = "/Users/barry/.local/share/nvim/site/pack/packer/start/everforest-nvim",
+    url = "https://github.com/neanias/everforest-nvim"
   },
   ["fidget.nvim"] = {
     loaded = true,
@@ -261,6 +267,10 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: everforest-nvim
+time([[Config for everforest-nvim]], true)
+try_loadstring("\27LJ\2\n8\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\15everforest\frequire\0", "config", "everforest-nvim")
+time([[Config for everforest-nvim]], false)
 -- Config for: tmux.nvim
 time([[Config for tmux.nvim]], true)
 try_loadstring("\27LJ\2\n.\0\0\3\0\3\0\0056\0\0\0'\2\1\0B\0\2\0029\0\2\0D\0\1\0\nsetup\ttmux\frequire\0", "config", "tmux.nvim")
@@ -271,7 +281,7 @@ try_loadstring("\27LJ\2\nz\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\00
 time([[Config for nvim-tree.lua]], false)
 -- Config for: cinnamon.nvim
 time([[Config for cinnamon.nvim]], true)
-try_loadstring("\27LJ\2\ng\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\fkeymaps\1\0\1\fkeymaps\0\1\0\2\nbasic\2\nextra\2\nsetup\rcinnamon\frequire\0", "config", "cinnamon.nvim")
+try_loadstring("\27LJ\2\ng\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\fkeymaps\1\0\1\fkeymaps\0\1\0\2\nextra\2\nbasic\2\nsetup\rcinnamon\frequire\0", "config", "cinnamon.nvim")
 time([[Config for cinnamon.nvim]], false)
 -- Conditional loads
 time([[Conditional loading of telescope-fzf-native.nvim]], true)

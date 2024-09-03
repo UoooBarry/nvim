@@ -88,6 +88,13 @@ require('packer').startup(function(use)
   use { "catppuccin/nvim", as = "catppuccin" }
   use { "rose-pine/neovim" } -- RosePine
   use 'AlexvZyl/nordic.nvim' -- Nordic theme
+  use({ -- everforest
+    "neanias/everforest-nvim",
+    -- Optional; default configuration will be used if setup isn't called.
+    config = function()
+      require("everforest").setup()
+    end,
+  })
 
   -- Fuzzy Finder (files, lsp, etc)
   use { 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = { 'nvim-lua/plenary.nvim' } }
@@ -169,7 +176,7 @@ vim.wo.signcolumn = 'yes'
 
 -- Set colorscheme
 vim.o.termguicolors = true
-vim.cmd [[colorscheme catppuccin-macchiato]]
+vim.cmd [[colorscheme nordic]]
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
@@ -507,7 +514,12 @@ end)
 vim.keymap.set('t', '<C-i>', function ()
   require("FTerm").toggle()
 end)
-
+vim.keymap.set('n', '<C-k>', function()
+  vim.cmd('m -1')
+end)
+vim.keymap.set('t', '<C-k>', function()
+  vim.cmd('m -1')
+end)
 -- Turn on lsp status information
 require('fidget').setup()
 
