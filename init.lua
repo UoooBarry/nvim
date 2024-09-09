@@ -57,6 +57,21 @@ require('packer').startup(function(use)
     after = 'nvim-treesitter',
   }
 
+  -- project
+  use "pluffie/neoproj"
+  -- dashboard
+  use {
+    'nvimdev/dashboard-nvim',
+    event = 'VimEnter',
+    config = function()
+      require('dashboard').setup {
+        -- config
+        theme = 'hyper'
+      }
+    end,
+    requires = {'nvim-tree/nvim-web-devicons'}
+  }
+
   -- Git related plugins
   use 'tpope/vim-fugitive'
   use 'tpope/vim-rhubarb'
@@ -113,6 +128,11 @@ require('packer').startup(function(use)
     })
   end }
 
+  -- keep cursor
+  use({ "rlychrisg/keepcursor.nvim", config = function ()
+    require("keepcursor").setup({})
+    require("keepcursor").ToggleCursorMid()
+  end})
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, 'custom.plugins')
   if has_plugins then
@@ -148,7 +168,6 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
-vim.o.scrolloff = 999
 -- Set highlight on search
 vim.o.hlsearch = true
 
@@ -176,7 +195,7 @@ vim.wo.signcolumn = 'yes'
 
 -- Set colorscheme
 vim.o.termguicolors = true
-vim.cmd [[colorscheme nordic]]
+vim.cmd [[colorscheme catppuccin-macchiato]]
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
@@ -566,5 +585,51 @@ cmp.setup {
   },
 }
 
+require('lualine').setup {
+    sections = {
+        lualine_a = {'mode'},
+        lualine_b = {'branch', 'diff', 'diagnostics'},
+        lualine_c = {},
+        lualine_x = {
+            'encoding', 'fileformat', 'filetype',
+            -- if adding options, create a new lua table within the lualine_x table
+            {
+                require('keepcursor').KeepCursorStatus,
+                color = { fg = 'Normal' },
+                cond = function ()
+                    -- this is a variable used inside keepcursor to track the state of currently enabled functions
+                    if _G.KeepCursorAt ~= nil then
+                        return true
+                    end
+                end
+            }
+        },
+        lualine_y = {'progress'},
+        lualine_z = {'location'}
+    },
+}
+require('lualine').setup {
+    sections = {
+        lualine_a = {'mode'},
+        lualine_b = {'branch', 'diff', 'diagnostics'},
+        lualine_c = {},
+        lualine_x = {
+            'encoding', 'fileformat', 'filetype',
+            -- if adding options, create a new lua table within the lualine_x table
+            {
+                require('keepcursor').KeepCursorStatus,
+                color = { fg = 'Normal' },
+                cond = function ()
+                    -- this is a variable used inside keepcursor to track the state of currently enabled functions
+                    if _G.KeepCursorAt ~= nil then
+                        return true
+                    end
+                end
+            }
+        },
+        lualine_y = {'progress'},
+        lualine_z = {'location'}
+    },
+}
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
