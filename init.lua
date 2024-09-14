@@ -87,7 +87,7 @@ require('packer').startup(function(use)
     config = function() return require("tmux").setup() end
   })
   use 'APZelos/blamer.nvim' -- Gitblame
-  
+
   use { "catppuccin/nvim", as = "catppuccin" }
   use { "rose-pine/neovim" } -- RosePine
   use 'AlexvZyl/nordic.nvim' -- Nordic theme
@@ -630,3 +630,7 @@ require('lualine').setup {
 }
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+
+if vim.g.neovide then
+  vim.g.neovide_cursor_trail_size = 0.1
+end
