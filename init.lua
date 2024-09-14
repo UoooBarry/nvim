@@ -87,19 +87,7 @@ require('packer').startup(function(use)
     config = function() return require("tmux").setup() end
   })
   use 'APZelos/blamer.nvim' -- Gitblame
-  use ({
-    'declancm/cinnamon.nvim',
-    config = function ()
-      require("cinnamon").setup {
-      -- Enable all provided keymaps
-        keymaps = {
-          basic = true,
-          extra = true,
-        },
-      }
-      end
-  })
-
+  
   use { "catppuccin/nvim", as = "catppuccin" }
   use { "rose-pine/neovim" } -- RosePine
   use 'AlexvZyl/nordic.nvim' -- Nordic theme
@@ -133,6 +121,7 @@ require('packer').startup(function(use)
     require("keepcursor").setup({})
     require("keepcursor").ToggleCursorMid()
   end})
+
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, 'custom.plugins')
   if has_plugins then
@@ -384,6 +373,11 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 
+-- line number settings
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.signcolumn = "number"
+
 -- LSP settings.
 --  This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(_, bufnr)
@@ -487,6 +481,9 @@ vim.keymap.set('n', '<leader>gd', function ()
   vim.cmd('silent! !github ' .. get_git_root())
 end, { desc = '[G]ithub [D]esktop', silent = true })
 
+vim.keymap.set('n', '<leader>trl', function ()
+  require('nvim-numbertoggle').toggle()
+end)
 -- barbar keysetting
 vim.keymap.set('n', '<C-1>', function()
   print('C-1 pressed')
