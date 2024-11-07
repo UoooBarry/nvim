@@ -1,3 +1,5 @@
+require("after.colors")
+
 -- Install packer
 local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
 local is_bootstrap = false
@@ -9,8 +11,8 @@ end
 
 -- github desktop
 local function get_git_root()
-    local dot_git_path = vim.fn.finddir(".git", ".;")
-    return vim.fn.fnamemodify(dot_git_path, ":h")
+  local dot_git_path = vim.fn.finddir(".git", ".;")
+  return vim.fn.fnamemodify(dot_git_path, ":h")
 end
 
 require('packer').startup(function(use)
@@ -93,16 +95,11 @@ require('packer').startup(function(use)
   use 'APZelos/blamer.nvim' -- Gitblame
 
   use { "catppuccin/nvim", as = "catppuccin" }
-  use { "rose-pine/neovim" } -- RosePine
+  use { "rose-pine/neovim",
+    as = "rose-pine"
+  } -- RosePine
   use 'AlexvZyl/nordic.nvim' -- Nordic theme
-  use({ -- everforest
-    "neanias/everforest-nvim",
-    -- Optional; default configuration will be used if setup isn't called.
-    config = function()
-      require("everforest").setup()
-    end,
-  })
-
+  use 'Yazeed1s/minimal.nvim'
   -- Fuzzy Finder (files, lsp, etc)
   use { 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = { 'nvim-lua/plenary.nvim' } }
 
@@ -188,7 +185,6 @@ vim.wo.signcolumn = 'yes'
 
 -- Set colorscheme
 vim.o.termguicolors = true
-vim.cmd [[colorscheme nordic]]
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
@@ -347,12 +343,15 @@ vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
+vim.keymap.set('n', '<leader>ps', function()
+  require('telescope.builtin').grep_string({ search = vim.fn.input("Grep > ") })
+end)
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'help', 'vim' },
+  ensure_installed = { 'ruby', 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'help', 'vim' },
 
   highlight = { enable = true },
   indent = { enable = true, disable = { 'python' } },
@@ -460,11 +459,6 @@ local on_attach = function(_, bufnr)
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, '[W]orkspace [L]ist Folders')
 
-  -- Press enter to clear highlight
-  -- 定义一个函数来清除搜索高亮
-  nmap('<CR>', function ()
-    vim.cmd('nohlsearch')
-  end, 'Clear Search Highlight')
   -- Create a command `:Format` local to the LSP buffer
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
     vim.lsp.buf.format()
@@ -704,3 +698,7 @@ vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
 vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 vim.o.foldcolumn = '1'
 vim.o.foldlevel = 99
+-- Press enter to clear highlight
+-- 定义一个函数来清除搜索高亮
+
+vim.api.nvim_set_keymap('n', '<CR>', ':nohlsearch<CR>', { noremap = true, silent = true })

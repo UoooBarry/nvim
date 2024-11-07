@@ -30,10 +30,12 @@ return {
         -- This should be renamed to `ruby_lsp` once this PR gets merged
         -- https://github.com/williamboman/mason-lspconfig.nvim/pull/395
         ruby_lsp = {
-          -- cmd = { "solargraph" },
-          -- init_options = {
-          --   formatter = "auto",
-          -- },
+          cmd = { "solargraph" },
+          init_options = {
+            formatter = "rubocop",
+            diagnostics = true,
+            formatting = true,
+          },
         },
         rubocop = {
           -- See: https://docs.rubocop.org/rubocop/usage/lsp.html

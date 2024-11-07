@@ -128,12 +128,6 @@ _G.packer_plugins = {
     path = "/Users/barry/.local/share/nvim/site/pack/packer/opt/dashboard-nvim",
     url = "https://github.com/nvimdev/dashboard-nvim"
   },
-  ["everforest-nvim"] = {
-    config = { "\27LJ\2\n8\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\15everforest\frequire\0" },
-    loaded = true,
-    path = "/Users/barry/.local/share/nvim/site/pack/packer/start/everforest-nvim",
-    url = "https://github.com/neanias/everforest-nvim"
-  },
   ["fidget.nvim"] = {
     loaded = true,
     path = "/Users/barry/.local/share/nvim/site/pack/packer/start/fidget.nvim",
@@ -175,6 +169,11 @@ _G.packer_plugins = {
     path = "/Users/barry/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
+  ["minimal.nvim"] = {
+    loaded = true,
+    path = "/Users/barry/.local/share/nvim/site/pack/packer/start/minimal.nvim",
+    url = "https://github.com/Yazeed1s/minimal.nvim"
+  },
   ["neodev.nvim"] = {
     loaded = true,
     path = "/Users/barry/.local/share/nvim/site/pack/packer/start/neodev.nvim",
@@ -184,11 +183,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/barry/.local/share/nvim/site/pack/packer/start/neoproj",
     url = "https://github.com/pluffie/neoproj"
-  },
-  neovim = {
-    loaded = true,
-    path = "/Users/barry/.local/share/nvim/site/pack/packer/start/neovim",
-    url = "https://github.com/rose-pine/neovim"
   },
   ["nordic.nvim"] = {
     loaded = true,
@@ -258,6 +252,12 @@ _G.packer_plugins = {
     path = "/Users/barry/.local/share/nvim/site/pack/packer/start/promise-async",
     url = "https://github.com/kevinhwang91/promise-async"
   },
+  ["rose-pine"] = {
+    config = { "\27LJ\2\n9\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\26colorscheme rose-pine\bcmd\bvim\0" },
+    loaded = true,
+    path = "/Users/barry/.local/share/nvim/site/pack/packer/start/rose-pine",
+    url = "https://github.com/rose-pine/neovim"
+  },
   ["telescope-ag"] = {
     loaded = true,
     path = "/Users/barry/.local/share/nvim/site/pack/packer/start/telescope-ag",
@@ -300,22 +300,22 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: keepcursor.nvim
-time([[Config for keepcursor.nvim]], true)
-try_loadstring("\27LJ\2\n`\0\0\3\0\4\0\f6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\0016\0\0\0'\2\1\0B\0\2\0029\0\3\0B\0\1\1K\0\1\0\20ToggleCursorMid\nsetup\15keepcursor\frequire\0", "config", "keepcursor.nvim")
-time([[Config for keepcursor.nvim]], false)
--- Config for: nvim-tree.lua
-time([[Config for nvim-tree.lua]], true)
-try_loadstring("\27LJ\2\nz\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\24update_focused_file\1\0\1\24update_focused_file\0\1\0\1\venable\2\nsetup\14nvim-tree\frequire\0", "config", "nvim-tree.lua")
-time([[Config for nvim-tree.lua]], false)
 -- Config for: tmux.nvim
 time([[Config for tmux.nvim]], true)
 try_loadstring("\27LJ\2\n.\0\0\3\0\3\0\0056\0\0\0'\2\1\0B\0\2\0029\0\2\0D\0\1\0\nsetup\ttmux\frequire\0", "config", "tmux.nvim")
 time([[Config for tmux.nvim]], false)
--- Config for: everforest-nvim
-time([[Config for everforest-nvim]], true)
-try_loadstring("\27LJ\2\n8\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\15everforest\frequire\0", "config", "everforest-nvim")
-time([[Config for everforest-nvim]], false)
+-- Config for: rose-pine
+time([[Config for rose-pine]], true)
+try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\26colorscheme rose-pine\bcmd\bvim\0", "config", "rose-pine")
+time([[Config for rose-pine]], false)
+-- Config for: nvim-tree.lua
+time([[Config for nvim-tree.lua]], true)
+try_loadstring("\27LJ\2\nz\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\24update_focused_file\1\0\1\24update_focused_file\0\1\0\1\venable\2\nsetup\14nvim-tree\frequire\0", "config", "nvim-tree.lua")
+time([[Config for nvim-tree.lua]], false)
+-- Config for: keepcursor.nvim
+time([[Config for keepcursor.nvim]], true)
+try_loadstring("\27LJ\2\n`\0\0\3\0\4\0\f6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\0016\0\0\0'\2\1\0B\0\2\0029\0\3\0B\0\1\1K\0\1\0\20ToggleCursorMid\nsetup\15keepcursor\frequire\0", "config", "keepcursor.nvim")
+time([[Config for keepcursor.nvim]], false)
 -- Conditional loads
 time([[Conditional loading of telescope-fzf-native.nvim]], true)
   require("packer.load")({"telescope-fzf-native.nvim"}, {}, _G.packer_plugins)
