@@ -1,4 +1,8 @@
 require("after.colors")
+require("after.packer")
+require("after.lualine")
+require("custom.keymap")
+require("custom.setting")
 
 -- Install packer
 local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
@@ -8,131 +12,6 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   vim.fn.system { 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path }
   vim.cmd [[packadd packer.nvim]]
 end
-
--- github desktop
-local function get_git_root()
-  local dot_git_path = vim.fn.finddir(".git", ".;")
-  return vim.fn.fnamemodify(dot_git_path, ":h")
-end
-
-require('packer').startup(function(use)
-  -- Package manager
-  use 'wbthomason/packer.nvim'
-
-  use { -- LSP Configuration & Plugins
-    'neovim/nvim-lspconfig',
-    requires = {
-      -- Automatically install LSPs to stdpath for neovim
-      'williamboman/mason.nvim',
-      'williamboman/mason-lspconfig.nvim',
-
-      -- Useful status updates for LSP
-      'j-hui/fidget.nvim',
-
-      -- Additional lua configuration, makes nvim stuff amazing
-      'folke/neodev.nvim',
-    },
-  }
-
-  use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'} -- folding block
-  use {'neoclide/coc.nvim', branch = 'release'}
-  use { 'dgox16/oldworld.nvim' }
-
-  use { -- Autocompletion
-    'hrsh7th/nvim-cmp',
-    requires = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
-  }
-
-  use {
-    'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate',
-  }
-
-  -- fzf lua
-  use {
-    'nvim-tree/nvim-web-devicons'
-  }
-
-  -- terminal
-  use "numToStr/FTerm.nvim"
-
-  use { 'junegunn/fzf', run = './install --bin', }
-
-  use { -- Additional text objects via treesitter
-    'nvim-treesitter/nvim-treesitter-textobjects',
-    after = 'nvim-treesitter',
-  }
-
-  -- project
-  use "pluffie/neoproj"
-  -- dashboard
-  use {
-    'nvimdev/dashboard-nvim',
-    event = 'VimEnter',
-    config = function()
-      require('dashboard').setup {
-        -- config
-        theme = 'hyper'
-      }
-    end,
-    requires = {'nvim-tree/nvim-web-devicons'}
-  }
-
-  -- Git related plugins
-  use 'tpope/vim-fugitive'
-  use 'tpope/vim-rhubarb'
-  use 'lewis6991/gitsigns.nvim'
-
-  use 'navarasu/onedark.nvim' -- Theme inspired by Atom
-  use 'nvim-lualine/lualine.nvim' -- Fancier statusline
-  use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
-  use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
-  use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
-  use({
-    "aserowy/tmux.nvim",
-    config = function() return require("tmux").setup() end
-  })
-  use 'APZelos/blamer.nvim' -- Gitblame
-
-  use { "catppuccin/nvim", as = "catppuccin" }
-  use { "rose-pine/neovim",
-    as = "rose-pine"
-  } -- RosePine
-  use 'AlexvZyl/nordic.nvim' -- Nordic theme
-  use 'Yazeed1s/minimal.nvim'
-  -- Fuzzy Finder (files, lsp, etc)
-  use { 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = { 'nvim-lua/plenary.nvim' } }
-
-  -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
-  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
-
-  -- Telescope Ag command
-  use({ "kelly-lin/telescope-ag", requires = { { "nvim-telescope/telescope.nvim" } } })
-
-  use { 'nvim-tree/nvim-tree.lua', config = function ()
-    require("nvim-tree").setup({
-      update_focused_file = {
-	      enable = true,
-      },
-    })
-  end }
-
-  -- keep cursor
-  use({ "rlychrisg/keepcursor.nvim", config = function ()
-    require("keepcursor").setup({})
-    require("keepcursor").ToggleCursorMid()
-  end})
-
-  -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
-  local has_plugins, plugins = pcall(require, 'custom.plugins')
-  if has_plugins then
-    plugins(use)
-  end
-
-  if is_bootstrap then
-    require('packer').sync()
-  end
-end)
 
 -- When we are bootstrapping a configuration, it doesn't
 -- make sense to execute the rest of the init.lua.
@@ -154,50 +33,6 @@ vim.api.nvim_create_autocmd('BufWritePost', {
   group = packer_group,
   pattern = vim.fn.expand '$MYVIMRC',
 })
-
--- [[ Setting options ]]
--- See `:help vim.o`
-
--- Set highlight on search
-vim.o.hlsearch = true
-
--- set yank clipboard to system
-vim.o.clipboard = 'unnamed'
-
--- Make line numbers default
-vim.wo.number = true
-
--- Enable mouse mode
-vim.o.mouse = 'a'
-
--- Enable break indent
-vim.o.breakindent = true
-
--- Save undo history
-vim.o.undofile = true
-
--- Case insensitive searching UNLESS /C or capital in search
-vim.o.ignorecase = true
-vim.o.smartcase = true
--- Decrease update time
-vim.o.updatetime = 250
-vim.wo.signcolumn = 'yes'
-
--- Set colorscheme
-vim.o.termguicolors = true
-
--- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
-
--- [[ Basic Keymaps ]]
--- Set <space> as the leader key
--- See `:help mapleader`
---  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
-
-vim.g.blamer_enabled = true -- enable git blamer
-
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
@@ -449,7 +284,7 @@ local on_attach = function(_, bufnr)
 
   -- See `:help K` for why this keymap
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-  nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+  nmap('<C-k>k', vim.lsp.buf.signature_help, 'Signature Documentation')
 
   -- Lesser used LSP functionality
   nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
@@ -514,65 +349,6 @@ mason_lspconfig.setup_handlers {
 }
 
 -- github desktop
-vim.keymap.set('n', '<leader>gd', function ()
-  vim.cmd('silent! !github ' .. get_git_root())
-end, { desc = '[G]ithub [D]esktop', silent = true })
-
-vim.keymap.set('n', '<leader>trl', function ()
-  require('nvim-numbertoggle').toggle()
-end)
--- barbar keysetting
-vim.keymap.set('n', '<C-1>', function()
-  print('C-1 pressed')
-  require('bufferline.api').goto_buffer(1)
-end, { desc = 'Goto tab 1' })
-
-vim.keymap.set('n', '<C-2>', function()
-  require('bufferline.api').goto_buffer(2)
-end, { desc = 'Goto tab 2' })
-
-vim.keymap.set('n', '<C-3>', function()
-  print('C-3 pressed')
-  require('bufferline.api').goto_buffer(3)
-end, { desc = 'Goto tab 3' })
-
-vim.keymap.set('n', '<C-4>', function()
-  require('bufferline.api').goto_buffer(4)
-end, { desc = 'Goto tab 4' })
-
-vim.keymap.set('n', '<C-5>', function()
-  require('bufferline.api').goto_buffer(5)
-end, { desc = 'Goto tab 5' })
-
-vim.keymap.set('n', '<C-6>', function()
-  require('bufferline.api').goto_buffer(6)
-end, { desc = 'Goto tab 6' })
-
-vim.keymap.set('n', '<C-7>', function()
-  require('bufferline.api').goto_buffer(7)
-end, { desc = 'Goto tab 7' })
-
-vim.keymap.set('n', '<leader>tt', function()
-  vim.cmd('NvimTreeToggle')
-end, { desc = '[T]oogle[T]ree' })
-
--- linter quick fix
-vim.keymap.set('n', '<leader>lf', function ()
-  vim.cmd('Format')
-end, { noremap=true, silent=true })
-
-vim.keymap.set('n', '<C-i>', function ()
-  require("FTerm").toggle()
-end)
-vim.keymap.set('t', '<C-i>', function ()
-  require("FTerm").toggle()
-end)
-vim.keymap.set('n', '<C-k>', function()
-  vim.cmd('m -1')
-end)
-vim.keymap.set('t', '<C-k>', function()
-  vim.cmd('m -1')
-end)
 -- Turn on lsp status information
 require('fidget').setup()
 
@@ -619,52 +395,6 @@ cmp.setup {
   },
 }
 
-require('lualine').setup {
-    sections = {
-        lualine_a = {'mode'},
-        lualine_b = {'branch', 'diff', 'diagnostics'},
-        lualine_c = {},
-        lualine_x = {
-            'encoding', 'fileformat', 'filetype',
-            -- if adding options, create a new lua table within the lualine_x table
-            {
-                require('keepcursor').KeepCursorStatus,
-                color = { fg = 'Normal' },
-                cond = function ()
-                    -- this is a variable used inside keepcursor to track the state of currently enabled functions
-                    if _G.KeepCursorAt ~= nil then
-                        return true
-                    end
-                end
-            }
-        },
-        lualine_y = {'progress'},
-        lualine_z = {'location'}
-    },
-}
-require('lualine').setup {
-    sections = {
-        lualine_a = {'mode'},
-        lualine_b = {'branch', 'diff', 'diagnostics'},
-        lualine_c = {},
-        lualine_x = {
-            'encoding', 'fileformat', 'filetype',
-            -- if adding options, create a new lua table within the lualine_x table
-            {
-                require('keepcursor').KeepCursorStatus,
-                color = { fg = 'Normal' },
-                cond = function ()
-                    -- this is a variable used inside keepcursor to track the state of currently enabled functions
-                    if _G.KeepCursorAt ~= nil then
-                        return true
-                    end
-                end
-            }
-        },
-        lualine_y = {'progress'},
-        lualine_z = {'location'}
-    },
-}
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
 
@@ -698,7 +428,4 @@ vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
 vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 vim.o.foldcolumn = '1'
 vim.o.foldlevel = 99
--- Press enter to clear highlight
--- 定义一个函数来清除搜索高亮
 
-vim.api.nvim_set_keymap('n', '<CR>', ':nohlsearch<CR>', { noremap = true, silent = true })

@@ -1,3 +1,10 @@
+require("rose-pine").setup({
+  styles = {
+    transparency = true,
+    italic = false
+  }
+})
+
 function ColorMyPencils(color)
   color = color or "rose-pine"
   vim.cmd.colorscheme(color)
