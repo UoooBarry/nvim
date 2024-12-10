@@ -3,6 +3,7 @@ require("after.packer")
 require("after.lualine")
 require("custom.keymap")
 require("custom.setting")
+require("custom.indentation")
 
 -- Install packer
 local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
@@ -348,7 +349,6 @@ mason_lspconfig.setup_handlers {
   end,
 }
 
--- github desktop
 -- Turn on lsp status information
 require('fidget').setup()
 
@@ -428,4 +428,3 @@ vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
 vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 vim.o.foldcolumn = '1'
 vim.o.foldlevel = 99
-

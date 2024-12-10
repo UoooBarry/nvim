@@ -149,7 +149,7 @@ _G.packer_plugins = {
     url = "https://github.com/lukas-reineke/indent-blankline.nvim"
   },
   ["keepcursor.nvim"] = {
-    config = { "\27LJ\2\n`\0\0\3\0\4\0\f6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\0016\0\0\0'\2\1\0B\0\2\0029\0\3\0B\0\1\1K\0\1\0\20ToggleCursorMid\nsetup\15keepcursor\frequire\0" },
+    config = { "\27LJ\2\n<\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\15keepcursor\frequire\0" },
     loaded = true,
     path = "/Users/barry/.local/share/nvim/site/pack/packer/start/keepcursor.nvim",
     url = "https://github.com/rlychrisg/keepcursor.nvim"
@@ -275,12 +275,6 @@ _G.packer_plugins = {
     path = "/Users/barry/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
-  ["tmux.nvim"] = {
-    config = { "\27LJ\2\n.\0\0\3\0\3\0\0056\0\0\0'\2\1\0B\0\2\0029\0\2\0D\0\1\0\nsetup\ttmux\frequire\0" },
-    loaded = true,
-    path = "/Users/barry/.local/share/nvim/site/pack/packer/start/tmux.nvim",
-    url = "https://github.com/aserowy/tmux.nvim"
-  },
   ["vim-fugitive"] = {
     loaded = true,
     path = "/Users/barry/.local/share/nvim/site/pack/packer/start/vim-fugitive",
@@ -290,27 +284,18 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/barry/.local/share/nvim/site/pack/packer/start/vim-rhubarb",
     url = "https://github.com/tpope/vim-rhubarb"
-  },
-  ["vim-sleuth"] = {
-    loaded = true,
-    path = "/Users/barry/.local/share/nvim/site/pack/packer/start/vim-sleuth",
-    url = "https://github.com/tpope/vim-sleuth"
   }
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: keepcursor.nvim
-time([[Config for keepcursor.nvim]], true)
-try_loadstring("\27LJ\2\n`\0\0\3\0\4\0\f6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\0016\0\0\0'\2\1\0B\0\2\0029\0\3\0B\0\1\1K\0\1\0\20ToggleCursorMid\nsetup\15keepcursor\frequire\0", "config", "keepcursor.nvim")
-time([[Config for keepcursor.nvim]], false)
--- Config for: tmux.nvim
-time([[Config for tmux.nvim]], true)
-try_loadstring("\27LJ\2\n.\0\0\3\0\3\0\0056\0\0\0'\2\1\0B\0\2\0029\0\2\0D\0\1\0\nsetup\ttmux\frequire\0", "config", "tmux.nvim")
-time([[Config for tmux.nvim]], false)
 -- Config for: nvim-tree.lua
 time([[Config for nvim-tree.lua]], true)
 try_loadstring("\27LJ\2\nz\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\24update_focused_file\1\0\1\24update_focused_file\0\1\0\1\venable\2\nsetup\14nvim-tree\frequire\0", "config", "nvim-tree.lua")
 time([[Config for nvim-tree.lua]], false)
+-- Config for: keepcursor.nvim
+time([[Config for keepcursor.nvim]], true)
+try_loadstring("\27LJ\2\n<\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\15keepcursor\frequire\0", "config", "keepcursor.nvim")
+time([[Config for keepcursor.nvim]], false)
 -- Conditional loads
 time([[Conditional loading of telescope-fzf-native.nvim]], true)
   require("packer.load")({"telescope-fzf-native.nvim"}, {}, _G.packer_plugins)
