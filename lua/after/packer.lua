@@ -93,6 +93,9 @@ require('packer').startup(function(use)
       filters = {
 	dotfiles = true,
       },
+      open_on_setup = false, -- Ensure this is false
+      open_on_setup_file = false, -- Prevent auto-open when editing a file
+      hijack_netrw = true,
     })
   end }
 
