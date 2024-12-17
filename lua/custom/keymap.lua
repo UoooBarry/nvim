@@ -30,3 +30,20 @@ end)
 
 vim.keymap.set('n', '<leader>F', ':Ag<space>', { noremap = true, silent = true })
 
+for i=1, 9 do
+	vim.keymap.set('n', string.format("<leader>%d", i), function()
+		require('bufferline.api').goto_buffer(i)
+	end, { desc = string.format("Go to buffer %d", i) })
+end
+
+vim.keymap.set('n', '<leader>zr', function()
+  require('bufferline.api').close_buffers_right()
+end, { desc = 'Close buffers right' })
+
+vim.keymap.set('n', '<leader>zl', function()
+  require('bufferline.api').close_buffers_left()
+end, { desc = 'Close buffers left' })
+
+vim.keymap.set('n', '<leader>za', function()
+  require('bufferline.api').close_all_but_current_or_pinned()
+end, { desc = 'Close all buffers' })
