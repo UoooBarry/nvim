@@ -47,3 +47,20 @@ end, { desc = 'Close buffers left' })
 vim.keymap.set('n', '<leader>za', function()
   require('bufferline.api').close_all_but_current_or_pinned()
 end, { desc = 'Close all buffers' })
+
+-- format
+vim.keymap.set('n', '<leader>ff', function()
+  vim.lsp.buf.format({ async = true })
+end, { desc = 'Format Go file' })
+
+local ls = require("luasnip")
+
+vim.keymap.set({"i"}, "<C-K>", function() ls.expand() end, {silent = true})
+vim.keymap.set({"i", "s"}, "<C-L>", function() ls.jump( 1) end, {silent = true})
+vim.keymap.set({"i", "s"}, "<C-J>", function() ls.jump(-1) end, {silent = true})
+
+vim.keymap.set({"i", "s"}, "<C-E>", function()
+	if ls.choice_active() then
+		ls.change_choice(1)
+	end
+end, {silent = true})

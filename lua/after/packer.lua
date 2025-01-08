@@ -93,15 +93,14 @@ require('packer').startup(function(use)
       filters = {
 	dotfiles = true,
       },
-      open_on_setup = false, -- Ensure this is false
-      open_on_setup_file = false, -- Prevent auto-open when editing a file
-      hijack_netrw = true,
+     hijack_netrw = true,
     })
   end }
 
   -- keep cursor
   use({ "rlychrisg/keepcursor.nvim", config = function ()
     require("keepcursor").setup({})
+    require("keepcursor").ToggleCursorMid()
   end})
 
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua

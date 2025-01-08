@@ -1,6 +1,8 @@
 require("after.colors")
 require("after.packer")
 require("after.lualine")
+require("after.gopls")
+require("after.jssnip")
 require("custom.keymap")
 require("custom.setting")
 require("custom.indentation")
@@ -69,11 +71,11 @@ require('Comment').setup()
 
 -- Enable `lukas-reineke/indent-blankline.nvim`
 -- See `:help indent_blankline.txt`
-require('ibl').setup {
- indent = {
-   char = '┊'
- }
-}
+-- require('ibl').setup {
+--  indent = {
+--    char = '┊'
+--  }
+-- }
 -- require('indent_blankline').setup {
 --  indent = {
 --   show_trailing_blankline_indent = false,
@@ -313,13 +315,6 @@ local servers = {
   -- pyright = {},
   -- rust_analyzer = {},
   -- tsserver = {},
-
-  sumneko_lua = {
-    Lua = {
-      workspace = { checkThirdParty = false },
-      telemetry = { enable = false },
-    },
-  },
 }
 
 -- Setup neovim lua configuration
