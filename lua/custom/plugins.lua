@@ -12,5 +12,35 @@ return function(use)
 
     -- comment file type setting
     local ft = require('Comment.ft')
-    ft.set('javascript', {'//%s', '/**%s*/'})
+    ft.set('javascript', { '//%s', '/**%s*/' })
+
+    -- Avante
+    -- -- Required plugins
+    use 'stevearc/dressing.nvim'
+    use 'nvim-lua/plenary.nvim'
+    use 'MunifTanjim/nui.nvim'
+    use 'MeanderingProgrammer/render-markdown.nvim'
+
+    -- Optional dependencies
+    use 'HakonHarnes/img-clip.nvim'
+
+    use {
+        'yetone/avante.nvim',
+        branch = 'main',
+        run = 'make',
+        config = function()
+            require('avante_lib').load()
+            require('avante').setup {
+                provider = 'deepseek',
+                vendors = {
+                    deepseek = {
+                        __inherited_from = 'openai',
+                        api_key_name = 'DEEPSEEK_API_KEY',
+                        endpoint = 'https://api.deepseek.com',
+                        model = 'deepseek-coder',
+                    },
+                },
+            }
+        end,
+    }
 end

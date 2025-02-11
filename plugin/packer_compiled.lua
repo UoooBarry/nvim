@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/Users/barry/.cache/nvim/packer_hererocks/2.1.1724512491/share/lua/5.1/?.lua;/Users/barry/.cache/nvim/packer_hererocks/2.1.1724512491/share/lua/5.1/?/init.lua;/Users/barry/.cache/nvim/packer_hererocks/2.1.1724512491/lib/luarocks/rocks-5.1/?.lua;/Users/barry/.cache/nvim/packer_hererocks/2.1.1724512491/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/Users/barry/.cache/nvim/packer_hererocks/2.1.1724512491/lib/lua/5.1/?.so"
+local package_path_str = "/Users/barry/.cache/nvim/packer_hererocks/2.1.1736781742/share/lua/5.1/?.lua;/Users/barry/.cache/nvim/packer_hererocks/2.1.1736781742/share/lua/5.1/?/init.lua;/Users/barry/.cache/nvim/packer_hererocks/2.1.1736781742/lib/luarocks/rocks-5.1/?.lua;/Users/barry/.cache/nvim/packer_hererocks/2.1.1736781742/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/Users/barry/.cache/nvim/packer_hererocks/2.1.1736781742/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -88,6 +88,12 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/barry/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
+  },
+  ["avante.nvim"] = {
+    config = { "\27LJ\2\n˜\2\0\0\5\0\n\0\0166\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\0016\0\0\0'\2\3\0B\0\2\0029\0\4\0005\2\5\0005\3\a\0005\4\6\0=\4\b\3=\3\t\2B\0\2\1K\0\1\0\fvendors\rdeepseek\1\0\1\rdeepseek\0\1\0\4\21__inherited_from\vopenai\rendpoint\29https://api.deepseek.com\17api_key_name\21DEEPSEEK_API_KEY\nmodel\19deepseek-coder\1\0\2\rprovider\rdeepseek\fvendors\0\nsetup\vavante\tload\15avante_lib\frequire\0" },
+    loaded = true,
+    path = "/Users/barry/.local/share/nvim/site/pack/packer/start/avante.nvim",
+    url = "https://github.com/yetone/avante.nvim"
   },
   ["barbar.nvim"] = {
     loaded = true,
@@ -128,6 +134,11 @@ _G.packer_plugins = {
     path = "/Users/barry/.local/share/nvim/site/pack/packer/opt/dashboard-nvim",
     url = "https://github.com/nvimdev/dashboard-nvim"
   },
+  ["dressing.nvim"] = {
+    loaded = true,
+    path = "/Users/barry/.local/share/nvim/site/pack/packer/start/dressing.nvim",
+    url = "https://github.com/stevearc/dressing.nvim"
+  },
   ["fidget.nvim"] = {
     loaded = true,
     path = "/Users/barry/.local/share/nvim/site/pack/packer/start/fidget.nvim",
@@ -142,6 +153,16 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/barry/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
+  },
+  ["img-clip.nvim"] = {
+    loaded = true,
+    path = "/Users/barry/.local/share/nvim/site/pack/packer/start/img-clip.nvim",
+    url = "https://github.com/HakonHarnes/img-clip.nvim"
+  },
+  ["indent-blankline.nvim"] = {
+    loaded = true,
+    path = "/Users/barry/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
+    url = "https://github.com/lukas-reineke/indent-blankline.nvim"
   },
   ["keepcursor.nvim"] = {
     config = { "\27LJ\2\n`\0\0\3\0\4\0\f6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\0016\0\0\0'\2\1\0B\0\2\0029\0\3\0B\0\1\1K\0\1\0\20ToggleCursorMid\nsetup\15keepcursor\frequire\0" },
@@ -184,6 +205,11 @@ _G.packer_plugins = {
     path = "/Users/barry/.local/share/nvim/site/pack/packer/start/nordic.nvim",
     url = "https://github.com/AlexvZyl/nordic.nvim"
   },
+  ["nui.nvim"] = {
+    loaded = true,
+    path = "/Users/barry/.local/share/nvim/site/pack/packer/start/nui.nvim",
+    url = "https://github.com/MunifTanjim/nui.nvim"
+  },
   ["nvim-cmp"] = {
     loaded = true,
     path = "/Users/barry/.local/share/nvim/site/pack/packer/start/nvim-cmp",
@@ -195,7 +221,7 @@ _G.packer_plugins = {
     url = "https://github.com/neovim/nvim-lspconfig"
   },
   ["nvim-tree.lua"] = {
-    config = { "\27LJ\2\n®\1\0\0\4\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\2B\0\2\1K\0\1\0\ffilters\1\0\1\rdotfiles\2\24update_focused_file\1\0\3\24update_focused_file\0\17hijack_netrw\2\ffilters\0\1\0\1\venable\2\nsetup\14nvim-tree\frequire\0" },
+    config = { "\27LJ\2\n®\1\0\0\4\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\2B\0\2\1K\0\1\0\ffilters\1\0\1\rdotfiles\2\24update_focused_file\1\0\3\17hijack_netrw\2\ffilters\0\24update_focused_file\0\1\0\1\venable\2\nsetup\14nvim-tree\frequire\0" },
     loaded = true,
     path = "/Users/barry/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
     url = "https://github.com/nvim-tree/nvim-tree.lua"
@@ -247,6 +273,11 @@ _G.packer_plugins = {
     path = "/Users/barry/.local/share/nvim/site/pack/packer/start/promise-async",
     url = "https://github.com/kevinhwang91/promise-async"
   },
+  ["render-markdown.nvim"] = {
+    loaded = true,
+    path = "/Users/barry/.local/share/nvim/site/pack/packer/start/render-markdown.nvim",
+    url = "https://github.com/MeanderingProgrammer/render-markdown.nvim"
+  },
   ["rose-pine"] = {
     loaded = true,
     path = "/Users/barry/.local/share/nvim/site/pack/packer/start/rose-pine",
@@ -283,14 +314,18 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: avante.nvim
+time([[Config for avante.nvim]], true)
+try_loadstring("\27LJ\2\n˜\2\0\0\5\0\n\0\0166\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\0016\0\0\0'\2\3\0B\0\2\0029\0\4\0005\2\5\0005\3\a\0005\4\6\0=\4\b\3=\3\t\2B\0\2\1K\0\1\0\fvendors\rdeepseek\1\0\1\rdeepseek\0\1\0\4\21__inherited_from\vopenai\rendpoint\29https://api.deepseek.com\17api_key_name\21DEEPSEEK_API_KEY\nmodel\19deepseek-coder\1\0\2\rprovider\rdeepseek\fvendors\0\nsetup\vavante\tload\15avante_lib\frequire\0", "config", "avante.nvim")
+time([[Config for avante.nvim]], false)
+-- Config for: nvim-tree.lua
+time([[Config for nvim-tree.lua]], true)
+try_loadstring("\27LJ\2\n®\1\0\0\4\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\2B\0\2\1K\0\1\0\ffilters\1\0\1\rdotfiles\2\24update_focused_file\1\0\3\17hijack_netrw\2\ffilters\0\24update_focused_file\0\1\0\1\venable\2\nsetup\14nvim-tree\frequire\0", "config", "nvim-tree.lua")
+time([[Config for nvim-tree.lua]], false)
 -- Config for: keepcursor.nvim
 time([[Config for keepcursor.nvim]], true)
 try_loadstring("\27LJ\2\n`\0\0\3\0\4\0\f6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\0016\0\0\0'\2\1\0B\0\2\0029\0\3\0B\0\1\1K\0\1\0\20ToggleCursorMid\nsetup\15keepcursor\frequire\0", "config", "keepcursor.nvim")
 time([[Config for keepcursor.nvim]], false)
--- Config for: nvim-tree.lua
-time([[Config for nvim-tree.lua]], true)
-try_loadstring("\27LJ\2\n®\1\0\0\4\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\2B\0\2\1K\0\1\0\ffilters\1\0\1\rdotfiles\2\24update_focused_file\1\0\3\24update_focused_file\0\17hijack_netrw\2\ffilters\0\1\0\1\venable\2\nsetup\14nvim-tree\frequire\0", "config", "nvim-tree.lua")
-time([[Config for nvim-tree.lua]], false)
 -- Conditional loads
 time([[Conditional loading of telescope-fzf-native.nvim]], true)
   require("packer.load")({"telescope-fzf-native.nvim"}, {}, _G.packer_plugins)
