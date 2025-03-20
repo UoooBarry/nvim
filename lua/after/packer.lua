@@ -88,18 +88,6 @@ require('packer').startup(function(use)
     -- Telescope Ag command
     use({ "kelly-lin/telescope-ag", requires = { { "nvim-telescope/telescope.nvim" } } })
 
-    use { 'nvim-tree/nvim-tree.lua', config = function()
-        require("nvim-tree").setup({
-            update_focused_file = {
-                enable = true,
-            },
-            filters = {
-                dotfiles = true,
-            },
-            hijack_netrw = true,
-        })
-    end }
-
     -- keep cursor
     use({
         "rlychrisg/keepcursor.nvim",

@@ -90,7 +90,7 @@ _G.packer_plugins = {
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
   ["avante.nvim"] = {
-    config = { "\27LJ\2\n˜\2\0\0\5\0\n\0\0166\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\0016\0\0\0'\2\3\0B\0\2\0029\0\4\0005\2\5\0005\3\a\0005\4\6\0=\4\b\3=\3\t\2B\0\2\1K\0\1\0\fvendors\rdeepseek\1\0\1\rdeepseek\0\1\0\4\21__inherited_from\vopenai\rendpoint\29https://api.deepseek.com\17api_key_name\21DEEPSEEK_API_KEY\nmodel\19deepseek-coder\1\0\2\rprovider\rdeepseek\fvendors\0\nsetup\vavante\tload\15avante_lib\frequire\0" },
+    config = { "\27LJ\2\nŽ\4\0\0\5\0\14\0\0206\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\0016\0\0\0'\2\3\0B\0\2\0029\0\4\0005\2\5\0005\3\a\0005\4\6\0=\4\b\0035\4\t\0=\4\n\3=\3\v\0025\3\f\0=\3\r\2B\0\2\1K\0\1\0\14behaviour\1\0\1\21auto_suggestions\1\fvendors\16gemini_code\1\0\4\17api_key_name\19GEMINI_API_KEY\nmodel(gemini-2.0-flash-thinking-exp-01-21\21__inherited_from\vgemini\15max_tokens\3€ \rdeepseek\1\0\2\rdeepseek\0\16gemini_code\0\1\0\5\nmodel\19deepseek-coder\15max_tokens\3€ \rendpoint\29https://api.deepseek.com\17api_key_name\21DEEPSEEK_API_KEY\21__inherited_from\vopenai\1\0\4\rprovider\rdeepseek\30auto_suggestions_provider\16gemini_code\14behaviour\0\fvendors\0\nsetup\vavante\tload\15avante_lib\frequire\0" },
     loaded = true,
     path = "/Users/barry/.local/share/nvim/site/pack/packer/start/avante.nvim",
     url = "https://github.com/yetone/avante.nvim"
@@ -220,12 +220,6 @@ _G.packer_plugins = {
     path = "/Users/barry/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
-  ["nvim-tree.lua"] = {
-    config = { "\27LJ\2\n®\1\0\0\4\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\2B\0\2\1K\0\1\0\ffilters\1\0\1\rdotfiles\2\24update_focused_file\1\0\3\17hijack_netrw\2\ffilters\0\24update_focused_file\0\1\0\1\venable\2\nsetup\14nvim-tree\frequire\0" },
-    loaded = true,
-    path = "/Users/barry/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
-    url = "https://github.com/nvim-tree/nvim-tree.lua"
-  },
   ["nvim-treesitter"] = {
     loaded = true,
     path = "/Users/barry/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
@@ -316,12 +310,8 @@ _G.packer_plugins = {
 time([[Defining packer_plugins]], false)
 -- Config for: avante.nvim
 time([[Config for avante.nvim]], true)
-try_loadstring("\27LJ\2\n˜\2\0\0\5\0\n\0\0166\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\0016\0\0\0'\2\3\0B\0\2\0029\0\4\0005\2\5\0005\3\a\0005\4\6\0=\4\b\3=\3\t\2B\0\2\1K\0\1\0\fvendors\rdeepseek\1\0\1\rdeepseek\0\1\0\4\21__inherited_from\vopenai\rendpoint\29https://api.deepseek.com\17api_key_name\21DEEPSEEK_API_KEY\nmodel\19deepseek-coder\1\0\2\rprovider\rdeepseek\fvendors\0\nsetup\vavante\tload\15avante_lib\frequire\0", "config", "avante.nvim")
+try_loadstring("\27LJ\2\nŽ\4\0\0\5\0\14\0\0206\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\0016\0\0\0'\2\3\0B\0\2\0029\0\4\0005\2\5\0005\3\a\0005\4\6\0=\4\b\0035\4\t\0=\4\n\3=\3\v\0025\3\f\0=\3\r\2B\0\2\1K\0\1\0\14behaviour\1\0\1\21auto_suggestions\1\fvendors\16gemini_code\1\0\4\17api_key_name\19GEMINI_API_KEY\nmodel(gemini-2.0-flash-thinking-exp-01-21\21__inherited_from\vgemini\15max_tokens\3€ \rdeepseek\1\0\2\rdeepseek\0\16gemini_code\0\1\0\5\nmodel\19deepseek-coder\15max_tokens\3€ \rendpoint\29https://api.deepseek.com\17api_key_name\21DEEPSEEK_API_KEY\21__inherited_from\vopenai\1\0\4\rprovider\rdeepseek\30auto_suggestions_provider\16gemini_code\14behaviour\0\fvendors\0\nsetup\vavante\tload\15avante_lib\frequire\0", "config", "avante.nvim")
 time([[Config for avante.nvim]], false)
--- Config for: nvim-tree.lua
-time([[Config for nvim-tree.lua]], true)
-try_loadstring("\27LJ\2\n®\1\0\0\4\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\2B\0\2\1K\0\1\0\ffilters\1\0\1\rdotfiles\2\24update_focused_file\1\0\3\17hijack_netrw\2\ffilters\0\24update_focused_file\0\1\0\1\venable\2\nsetup\14nvim-tree\frequire\0", "config", "nvim-tree.lua")
-time([[Config for nvim-tree.lua]], false)
 -- Config for: keepcursor.nvim
 time([[Config for keepcursor.nvim]], true)
 try_loadstring("\27LJ\2\n`\0\0\3\0\4\0\f6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\0016\0\0\0'\2\1\0B\0\2\0029\0\3\0B\0\1\1K\0\1\0\20ToggleCursorMid\nsetup\15keepcursor\frequire\0", "config", "keepcursor.nvim")

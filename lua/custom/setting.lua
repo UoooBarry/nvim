@@ -40,3 +40,5 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 vim.g.blamer_enabled = true -- enable git blamer
+
+vim.opt.laststatus = 3

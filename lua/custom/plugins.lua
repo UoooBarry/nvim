@@ -32,14 +32,25 @@ return function(use)
             require('avante_lib').load()
             require('avante').setup {
                 provider = 'deepseek',
+                auto_suggestions_provider = "gemini_code",
                 vendors = {
                     deepseek = {
                         __inherited_from = 'openai',
                         api_key_name = 'DEEPSEEK_API_KEY',
                         endpoint = 'https://api.deepseek.com',
                         model = 'deepseek-coder',
+                        max_tokens = 4096,
                     },
+                    gemini_code = {
+                        __inherited_from = "gemini",
+                        api_key_name = 'GEMINI_API_KEY',
+                        model = 'gemini-2.0-flash-thinking-exp-01-21',
+                        max_tokens = 4096
+                    }
                 },
+                behaviour = {
+                    auto_suggestions = false,
+                }
             }
         end,
     }

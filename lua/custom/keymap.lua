@@ -12,9 +12,6 @@ vim.api.nvim_set_keymap('n', '<CR>', ':nohlsearch<CR>', { noremap = true, silent
 vim.keymap.set('n', '<leader>gd', function()
     vim.cmd('silent! !github ' .. get_git_root())
 end, { desc = '[G]ithub [D]esktop', silent = true })
-vim.keymap.set('n', '<leader>tt', function()
-    vim.cmd('NvimTreeToggle')
-end, { desc = '[T]oogle[T]ree' })
 
 -- linter quick fix
 vim.keymap.set('n', '<leader>lf', function()
