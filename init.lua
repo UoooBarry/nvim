@@ -7,6 +7,7 @@ require("custom.keymap")
 require("custom.setting")
 require("custom.indentation")
 require("custom.formatter")
+require("custom.harpoon")
 
 -- Install packer
 local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'

@@ -27,24 +27,6 @@ end)
 
 vim.keymap.set('n', '<leader>F', ':Ag<space>', { noremap = true, silent = true })
 
-for i = 1, 9 do
-    vim.keymap.set('n', string.format("<leader>%d", i), function()
-        require('bufferline.api').goto_buffer(i)
-    end, { desc = string.format("Go to buffer %d", i) })
-end
-
-vim.keymap.set('n', '<leader>zr', function()
-    require('bufferline.api').close_buffers_right()
-end, { desc = 'Close buffers right' })
-
-vim.keymap.set('n', '<leader>zl', function()
-    require('bufferline.api').close_buffers_left()
-end, { desc = 'Close buffers left' })
-
-vim.keymap.set('n', '<leader>za', function()
-    require('bufferline.api').close_all_but_current_or_pinned()
-end, { desc = 'Close all buffers' })
-
 -- format
 vim.keymap.set('n', '<leader>ff', function()
     vim.lsp.buf.format({ async = true })
@@ -68,3 +50,39 @@ vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help,
     { noremap = true, silent = true, desc = "Show function signature help in insert mode" })
 
 vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = '[R]e[n]ame', noremap = true, silent = true })
+
+
+-- harpoon2
+local harpoon = require("harpoon")
+-- basic telescope configuration
+-- local conf = require("telescope.config").values
+-- local function toggle_telescope(harpoon_files)
+--     local file_paths = {}
+--     for _, item in ipairs(harpoon_files.items) do
+--         table.insert(file_paths, item.value)
+--     end
+--
+--     require("telescope.pickers").new({}, {
+--         prompt_title = "Harpoon",
+--         finder = require("telescope.finders").new_table({
+--             results = file_paths,
+--         }),
+--         previewer = conf.file_previewer({}),
+--         sorter = conf.generic_sorter({}),
+--     }):find()
+-- end
+
+vim.keymap.set("n", "<C-a>", function() harpoon:list():add() end)
+vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+-- vim.keymap.set("n", "<C-e>", function() toggle_telescope(harpoon:list()) end,
+--     { desc = "Open harpoon window" })
+
+for i = 1, 5 do
+    vim.keymap.set("n", string.format("<leader>%d", i), function() harpoon:list():select(i) end)
+    vim.keymap.set("n", string.format("<leader>hr%d", i), function() harpoon:list():remove_at(i) end)
+end
+vim.keymap.set("n", "<leader>hrc", function() harpoon:list():clear() end)
+
+-- Toggle previous & next buffers stored within Harpoon list
+vim.keymap.set("n", "<leader>p", function() harpoon:list():prev() end)
+vim.keymap.set("n", "<leader>n", function() harpoon:list():next() end)

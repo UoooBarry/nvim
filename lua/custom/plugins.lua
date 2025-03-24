@@ -1,6 +1,4 @@
 return function(use)
-    use { 'romgrk/barbar.nvim', wants = 'nvim-web-devicons' }
-
     -- luasnip engine
     use({
         "L3MON4D3/LuaSnip",
@@ -53,5 +51,11 @@ return function(use)
                 }
             }
         end,
+    }
+
+    use {
+        "ThePrimeagen/harpoon",
+        branch = "harpoon2",
+        requires = { {"nvim-lua/plenary.nvim"} }
     }
 end
