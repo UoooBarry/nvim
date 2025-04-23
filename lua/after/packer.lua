@@ -18,7 +18,6 @@ require('packer').startup(function(use)
     }
 
     use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' } -- folding block
-    use { 'neoclide/coc.nvim', branch = 'release' }
     use { 'dgox16/oldworld.nvim' }
 
     use { -- Autocompletion
