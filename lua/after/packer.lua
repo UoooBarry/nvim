@@ -6,15 +6,15 @@ require('packer').startup(function(use)
         'neovim/nvim-lspconfig',
         requires = {
             -- Automatically install LSPs to stdpath for neovim
-            'williamboman/mason.nvim',
-            'williamboman/mason-lspconfig.nvim',
+            'mason-org/mason.nvim',
+            'mason-org/mason-lspconfig.nvim',
 
             -- Useful status updates for LSP
             'j-hui/fidget.nvim',
 
             -- Additional lua configuration, makes nvim stuff amazing
             'folke/neodev.nvim',
-    },
+        },
     }
 
     use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' } -- folding block

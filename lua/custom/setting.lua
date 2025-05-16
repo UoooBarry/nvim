@@ -42,3 +42,11 @@ vim.g.maplocalleader = ' '
 vim.g.blamer_enabled = true -- enable git blamer
 
 vim.opt.laststatus = 3
+
+vim.diagnostic.config({
+  virtual_text = true,       -- 行内显示诊断信息
+  signs = true,              -- 左边的诊断图标
+  underline = true,          -- 下划线高亮
+  update_in_insert = false,
+  severity_sort = true,
+})
