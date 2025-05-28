@@ -9,9 +9,9 @@ vim.g.maplocalleader = ' '
 
 vim.api.nvim_set_keymap('n', '<CR>', ':nohlsearch<CR>', { noremap = true, silent = true })
 
-vim.keymap.set('n', '<leader>gd', function()
-    vim.cmd('silent! !github ' .. get_git_root())
-end, { desc = '[G]ithub [D]esktop', silent = true })
+-- vim.keymap.set('n', '<leader>gd', function()
+--     vim.cmd('silent! !github ' .. get_git_root())
+-- end, { desc = '[G]ithub [D]esktop', silent = true })
 
 -- linter quick fix
 vim.keymap.set('n', '<leader>lf', function()
