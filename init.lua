@@ -9,6 +9,7 @@ require("custom.setting")
 require("custom.indentation")
 require("custom.formatter")
 require("custom.harpoon")
+require("custom.ruby")
 
 -- Automatically source and re-compile packer whenever you save this init.lua
 local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
@@ -310,7 +311,12 @@ require("mason").setup()
 local mason_lspconfig = require 'mason-lspconfig'
 mason_lspconfig.setup({
     ensure_installed = vim.tbl_keys(servers),
-    automatic_enable = true,
+    automatic_enable = {
+        excldue = {
+            "solargraph",
+            "ruby_lsp"
+        }
+    },
     on_attach = on_attach,
 })
 
