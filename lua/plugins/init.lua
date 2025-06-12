@@ -124,9 +124,6 @@ return {
   -- Terminal
   { "numToStr/FTerm.nvim" },
 
-  -- Project
-  { "pluffie/neoproj" },
-
   -- Dashboard
   {
     'nvimdev/dashboard-nvim',

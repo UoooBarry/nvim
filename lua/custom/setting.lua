@@ -1,6 +1,12 @@
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
+-- if opened with a directory as argument, set it as cwd
+local arg = vim.fn.argv(0)
+if arg and vim.fn.isdirectory(arg) == 1 then
+  vim.cmd('cd ' .. arg)
+end
+
 -- Set highlight on search
 vim.o.hlsearch = true
 
