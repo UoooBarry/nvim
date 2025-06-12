@@ -4,9 +4,6 @@ local function get_git_root()
     return vim.fn.fnamemodify(dot_git_path, ":h")
 end
 
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
-
 vim.api.nvim_set_keymap('n', '<CR>', ':nohlsearch<CR>', { noremap = true, silent = true })
 
 -- vim.keymap.set('n', '<leader>gd', function()
