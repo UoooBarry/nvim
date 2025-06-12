@@ -1,5 +1,4 @@
-require("custom.ensure_packer")
-require("after.packer")
+require("config.lazy")
 require("after.colors")
 require("after.lualine")
 require("after.gopls")
@@ -11,13 +10,6 @@ require("custom.formatter")
 require("custom.harpoon")
 require("custom.ruby")
 
--- Automatically source and re-compile packer whenever you save this init.lua
-local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
-vim.api.nvim_create_autocmd('BufWritePost', {
-  command = 'source <afile> | silent! LspStop | silent! LspStart | PackerCompile',
-  group = packer_group,
-  pattern = vim.fn.expand '$MYVIMRC',
-})
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
