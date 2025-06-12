@@ -274,7 +274,9 @@ local servers = {
     gopls = {},
     pyright = {},
     rust_analyzer = {},
-    lua_ls = {}
+    lua_ls = {},
+    ts_ls = {},
+    vue_ls = {}
 }
 
 -- Setup neovim lua configuration
