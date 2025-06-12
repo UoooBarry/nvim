@@ -90,7 +90,7 @@ _G.packer_plugins = {
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
   ["avante.nvim"] = {
-    config = { "\27LJ\2\né\4\0\0\5\0\14\0\0206\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\0016\0\0\0'\2\3\0B\0\2\0029\0\4\0005\2\5\0005\3\a\0005\4\6\0=\4\b\0035\4\t\0=\4\n\3=\3\v\0025\3\f\0=\3\r\2B\0\2\1K\0\1\0\14behaviour\1\0\1\21auto_suggestions\1\fvendors\16gemini_code\1\0\4\17api_key_name\19GEMINI_API_KEY\nmodel(gemini-2.0-flash-thinking-exp-01-21\21__inherited_from\vgemini\15max_tokens\3Ä \rdeepseek\1\0\2\rdeepseek\0\16gemini_code\0\1\0\5\nmodel\19deepseek-coder\15max_tokens\3Ä \rendpoint\29https://api.deepseek.com\17api_key_name\21DEEPSEEK_API_KEY\21__inherited_from\vopenai\1\0\4\30auto_suggestions_provider\16gemini_code\rprovider\rdeepseek\14behaviour\0\fvendors\0\nsetup\vavante\tload\15avante_lib\frequire\0" },
+    config = { "\27LJ\2\né\4\0\0\5\0\14\0\0206\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\0016\0\0\0'\2\3\0B\0\2\0029\0\4\0005\2\5\0005\3\a\0005\4\6\0=\4\b\0035\4\t\0=\4\n\3=\3\v\0025\3\f\0=\3\r\2B\0\2\1K\0\1\0\14behaviour\1\0\1\21auto_suggestions\1\fvendors\16gemini_code\1\0\4\nmodel(gemini-2.0-flash-thinking-exp-01-21\21__inherited_from\vgemini\15max_tokens\3Ä \17api_key_name\19GEMINI_API_KEY\rdeepseek\1\0\2\16gemini_code\0\rdeepseek\0\1\0\5\15max_tokens\3Ä \21__inherited_from\vopenai\nmodel\19deepseek-coder\rendpoint\29https://api.deepseek.com\17api_key_name\21DEEPSEEK_API_KEY\1\0\4\30auto_suggestions_provider\16gemini_code\14behaviour\0\fvendors\0\rprovider\rdeepseek\nsetup\vavante\tload\15avante_lib\frequire\0" },
     loaded = true,
     path = "/Users/barry/.local/share/nvim/site/pack/packer/start/avante.nvim",
     url = "https://github.com/yetone/avante.nvim"
@@ -152,11 +152,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/barry/.local/share/nvim/site/pack/packer/start/img-clip.nvim",
     url = "https://github.com/HakonHarnes/img-clip.nvim"
-  },
-  ["indent-blankline.nvim"] = {
-    loaded = true,
-    path = "/Users/barry/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
-    url = "https://github.com/lukas-reineke/indent-blankline.nvim"
   },
   ["keepcursor.nvim"] = {
     config = { "\27LJ\2\n`\0\0\3\0\4\0\f6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\0016\0\0\0'\2\1\0B\0\2\0029\0\3\0B\0\1\1K\0\1\0\20ToggleCursorMid\nsetup\15keepcursor\frequire\0" },
@@ -226,11 +221,6 @@ _G.packer_plugins = {
     path = "/Users/barry/.local/share/nvim/site/pack/packer/opt/nvim-treesitter-textobjects",
     url = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects"
   },
-  ["nvim-ufo"] = {
-    loaded = true,
-    path = "/Users/barry/.local/share/nvim/site/pack/packer/start/nvim-ufo",
-    url = "https://github.com/kevinhwang91/nvim-ufo"
-  },
   ["nvim-web-devicons"] = {
     loaded = true,
     path = "/Users/barry/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
@@ -255,11 +245,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/barry/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
-  },
-  ["promise-async"] = {
-    loaded = true,
-    path = "/Users/barry/.local/share/nvim/site/pack/packer/start/promise-async",
-    url = "https://github.com/kevinhwang91/promise-async"
   },
   ["render-markdown.nvim"] = {
     loaded = true,
@@ -308,7 +293,7 @@ try_loadstring("\27LJ\2\n`\0\0\3\0\4\0\f6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B
 time([[Config for keepcursor.nvim]], false)
 -- Config for: avante.nvim
 time([[Config for avante.nvim]], true)
-try_loadstring("\27LJ\2\né\4\0\0\5\0\14\0\0206\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\0016\0\0\0'\2\3\0B\0\2\0029\0\4\0005\2\5\0005\3\a\0005\4\6\0=\4\b\0035\4\t\0=\4\n\3=\3\v\0025\3\f\0=\3\r\2B\0\2\1K\0\1\0\14behaviour\1\0\1\21auto_suggestions\1\fvendors\16gemini_code\1\0\4\17api_key_name\19GEMINI_API_KEY\nmodel(gemini-2.0-flash-thinking-exp-01-21\21__inherited_from\vgemini\15max_tokens\3Ä \rdeepseek\1\0\2\rdeepseek\0\16gemini_code\0\1\0\5\nmodel\19deepseek-coder\15max_tokens\3Ä \rendpoint\29https://api.deepseek.com\17api_key_name\21DEEPSEEK_API_KEY\21__inherited_from\vopenai\1\0\4\30auto_suggestions_provider\16gemini_code\rprovider\rdeepseek\14behaviour\0\fvendors\0\nsetup\vavante\tload\15avante_lib\frequire\0", "config", "avante.nvim")
+try_loadstring("\27LJ\2\né\4\0\0\5\0\14\0\0206\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\0016\0\0\0'\2\3\0B\0\2\0029\0\4\0005\2\5\0005\3\a\0005\4\6\0=\4\b\0035\4\t\0=\4\n\3=\3\v\0025\3\f\0=\3\r\2B\0\2\1K\0\1\0\14behaviour\1\0\1\21auto_suggestions\1\fvendors\16gemini_code\1\0\4\nmodel(gemini-2.0-flash-thinking-exp-01-21\21__inherited_from\vgemini\15max_tokens\3Ä \17api_key_name\19GEMINI_API_KEY\rdeepseek\1\0\2\16gemini_code\0\rdeepseek\0\1\0\5\15max_tokens\3Ä \21__inherited_from\vopenai\nmodel\19deepseek-coder\rendpoint\29https://api.deepseek.com\17api_key_name\21DEEPSEEK_API_KEY\1\0\4\30auto_suggestions_provider\16gemini_code\14behaviour\0\fvendors\0\rprovider\rdeepseek\nsetup\vavante\tload\15avante_lib\frequire\0", "config", "avante.nvim")
 time([[Config for avante.nvim]], false)
 -- Conditional loads
 time([[Conditional loading of telescope-fzf-native.nvim]], true)

@@ -32,6 +32,7 @@ return {
           cmd = { "rubocop", "--lsp" },
           root_dir = lspconfig.util.root_pattern("Gemfile", ".git", "."),
         },
+        pyright = {},
         sqlls = {},
         terraformls = {},
         tsserver = {},

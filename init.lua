@@ -51,20 +51,6 @@ require('lualine').setup {
 -- Enable Comment.nvim
 require('Comment').setup()
 
--- Enable `lukas-reineke/indent-blankline.nvim`
--- See `:help indent_blankline.txt`
--- require('ibl').setup {
---  indent = {
---    char = '┊'
---  }
--- }
--- require('indent_blankline').setup {
---  indent = {
---   show_trailing_blankline_indent = false,
---  char = '┊'
---  }
---}
-
 -- Gitsigns
 -- See `:help gitsigns.txt`
 require('gitsigns').setup {
@@ -286,7 +272,6 @@ local on_attach = function(_, bufnr)
   end, { desc = 'Format current buffer with LSP' })
 end
 
-
 -- Enable the following language servers
 --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
 --
@@ -297,6 +282,7 @@ local servers = {
   gopls = {},
   pyright = {},
   rust_analyzer = {},
+  lua_ls = {}
 }
 
 -- Setup neovim lua configuration
@@ -311,12 +297,7 @@ require("mason").setup()
 local mason_lspconfig = require 'mason-lspconfig'
 mason_lspconfig.setup({
     ensure_installed = vim.tbl_keys(servers),
-    automatic_enable = {
-        excldue = {
-            "solargraph",
-            "ruby_lsp"
-        }
-    },
+    automatic_enable = vim.tbl_keys(servers),
     on_attach = on_attach,
 })
 
@@ -381,21 +362,8 @@ if vim.g.neovide then
 end
 
 -- UFO setting
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.foldingRange = {
-    dynamicRegistration = false,
-    lineFoldingOnly = true
-}
-local language_servers = require("lspconfig").util.available_servers() -- or list servers manually like {'gopls', 'clangd'}
-for _, ls in ipairs(language_servers) do
-    require('lspconfig')[ls].setup({
-        capabilities = capabilities
-        -- you can add other fields for setting up lsp server in this table
-    })
-end
-require('ufo').setup()
-vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
-vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
 vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 vim.o.foldcolumn = '1'
 vim.o.foldlevel = 99
+vim.wo.foldmethod = 'expr'
+vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
