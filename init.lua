@@ -286,6 +286,13 @@ require('neodev').setup()
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
+-- UFO setup
+capabilities.textDocument.foldingRange = {
+    dynamicRegistration = false,
+    lineFoldingOnly = true
+}
+require('ufo').setup()
+
 -- Setup mason so it can manage external tooling
 require("mason").setup()
 local mason_lspconfig = require 'mason-lspconfig'
@@ -357,7 +364,7 @@ end
 
 -- UFO setting
 vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
-vim.o.foldcolumn = '1'
+vim.o.foldcolumn = '0'
 vim.o.foldlevel = 99
 vim.wo.foldmethod = 'expr'
 vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
