@@ -21,6 +21,7 @@ local ruby_version = get_ruby_version()
 
 if ruby_version and is_less_than_2_7(ruby_version) then
     lspconfig.solargraph.setup({
+        cmd = { "/Users/barry/.rbenv/shims/solargraph", "stdio" },
         settings = {
             solargraph = {
                 diagnostics = true

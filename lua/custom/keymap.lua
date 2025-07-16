@@ -83,3 +83,9 @@ vim.keymap.set("n", "<leader>hrc", function() harpoon:list():clear() end)
 -- Toggle previous & next buffers stored within Harpoon list
 vim.keymap.set("n", "<leader>p", function() harpoon:list():prev() end)
 vim.keymap.set("n", "<leader>n", function() harpoon:list():next() end)
+vim.keymap.set('n', '<leader>rt', vim.cmd.UndotreeToggle)
+
+-- Novel reader
+vim.keymap.set('n', '|', require('novel-reader').prev_chapter)
+vim.keymap.set('n', '\\', require('novel-reader').next_chapter)
+
