@@ -3,7 +3,8 @@ require("after.colors")
 require("after.lualine")
 require("after.gopls")
 require("after.lualsp")
-require("after.jssnip")
+require("after.vuelsp")
+require("after.snips")
 require("custom.keymap")
 require("custom.setting")
 require("custom.indentation")
@@ -64,7 +65,7 @@ require('gitsigns').setup {
         untracked    = { text = '┆' },
     },
     signs_staged_enable          = true,
-    signcolumn                   = true, -- Toggle with `:Gitsigns toggle_signs`
+    signcolumn                   = true,  -- Toggle with `:Gitsigns toggle_signs`
     numhl                        = false, -- Toggle with `:Gitsigns toggle_numhl`
     linehl                       = false, -- Toggle with `:Gitsigns toggle_linehl`
     word_diff                    = false, -- Toggle with `:Gitsigns toggle_word_diff`
@@ -85,7 +86,7 @@ require('gitsigns').setup {
     current_line_blame_formatter = '<author>, <author_time:%R> - <summary>',
     sign_priority                = 6,
     update_debounce              = 100,
-    status_formatter             = nil, -- Use default
+    status_formatter             = nil,   -- Use default
     max_file_length              = 40000, -- Disable if file is longer than this (in lines)
     preview_config               = {
         -- Options passed to nvim_open_win
@@ -101,10 +102,10 @@ require('gitsigns').setup {
 require('telescope').setup {
     extensions = {
         fzf = {
-            fuzzy = true,             -- false will only do exact matching
+            fuzzy = true,                   -- false will only do exact matching
             override_generic_sorter = true, -- override the generic sorter
-            override_file_sorter = true, -- override the file sorter
-            case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+            override_file_sorter = true,    -- override the file sorter
+            case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
         },
         undo = {},
     },
@@ -277,7 +278,9 @@ local servers = {
     rust_analyzer = {},
     lua_ls = {},
     ts_ls = {},
-    vue_ls = {}
+    vue_ls = {},
+    vtsls = {},
+    htmx = {}
 }
 
 -- Setup neovim lua configuration
@@ -351,17 +354,6 @@ cmp.setup {
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
-
-if vim.g.neovide then
-    vim.g.neovide_cursor_trail_size = 0.1
-    -- allow neovide to cmd+c cmd+v
-    vim.keymap.set('n', '<D-s>', ':w<CR>')    -- Save
-    vim.keymap.set('v', '<D-c>', '"+y')       -- Copy
-    vim.keymap.set('n', '<D-v>', '"+P')       -- Paste normal mode
-    vim.keymap.set('v', '<D-v>', '"+P')       -- Paste visual mode
-    vim.keymap.set('c', '<D-v>', '<C-R>+')    -- Paste command mode
-    vim.keymap.set('i', '<D-v>', '<ESC>l"+Pli') -- Paste insert mode
-end
 
 -- UFO setting
 vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]

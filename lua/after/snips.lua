@@ -1,10 +1,7 @@
--- Initialize LuaSnip if not already done
 local luasnip = require 'luasnip'
 local fmt = require("luasnip.extras.fmt").fmt
 
--- Define custom snippets for JavaScript
 luasnip.add_snippets('javascript', {
-    -- JSDoc comment snippet
     luasnip.snippet('jsdoc', fmt([[
 /**
  * [description]
@@ -16,6 +13,16 @@ luasnip.add_snippets('javascript', {
         paramType = luasnip.insert_node(2, 'paramType'),
         paramName = luasnip.insert_node(3, 'paramName'),
         returnType = luasnip.insert_node(4, 'returnType'),
+    }, { delimiters = "[]" })
+    )
+})
+
+luasnip.add_snippets('ruby', {
+    luasnip.snippet('def', fmt([[
+def [function_name]
+end
+    ]], {
+        function_name = luasnip.insert_node(1, 'name'),
     }, { delimiters = "[]" })
     )
 })
