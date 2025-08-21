@@ -172,4 +172,4 @@ return {
     {
         "mbbill/undotree"
     },
-    }
+}
