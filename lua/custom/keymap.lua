@@ -15,13 +15,6 @@ vim.keymap.set('n', '<leader>lf', function()
     vim.cmd('Format')
 end, { noremap = true, silent = true })
 
-vim.keymap.set('n', '<leader>k', function()
-    vim.cmd('move -2')
-end)
-vim.keymap.set('n', '<leader>j', function()
-    vim.cmd('move +1')
-end)
-
 vim.keymap.set('n', '<leader>F', ':Ag<space>', { noremap = true, silent = true })
 
 -- format
@@ -86,6 +79,12 @@ vim.keymap.set("n", "<leader>n", function() harpoon:list():next() end)
 vim.keymap.set('n', '<leader>rt', vim.cmd.UndotreeToggle)
 
 -- Novel reader
-vim.keymap.set('n', '|', require('novel-reader').prev_chapter)
-vim.keymap.set('n', '\\', require('novel-reader').next_chapter)
+local ok, novel_reader = pcall(require, 'novel-reader')
+if ok then
+    vim.keymap.set('n', '|', novel_reader.prev_chapter)
+    vim.keymap.set('n', '\\', novel_reader.next_chapter)
+end
 
+-- move key up and down
+vim.keymap.set("v", "J", ":m'>+1<cr>gv=gv", { noremap = true })
+vim.keymap.set("v", "K", ":m'<-2<cr>gv=gv", { noremap = true })
