@@ -152,7 +152,7 @@ end)
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
     -- Add languages to be installed here that you want installed for treesitter
-    ensure_installed = { 'ruby', 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'vim' },
+    ensure_installed = { 'ruby', 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'vim', 'vue', 'css' },
 
     highlight = { enable = true },
     indent = { enable = true, disable = { 'python' } },
@@ -280,7 +280,8 @@ local servers = {
     ts_ls = {},
     vue_ls = {},
     vtsls = {},
-    htmx = {}
+    htmx = {},
+    emmet_language_server = {}
 }
 
 -- Setup neovim lua configuration
