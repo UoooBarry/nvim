@@ -9,8 +9,9 @@ require("custom.keymap")
 require("custom.setting")
 require("custom.indentation")
 require("custom.formatter")
-require("custom.harpoon")
+require("custom.harpoonmap")
 require("custom.ruby")
+require("custom.filetypes")
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
@@ -144,9 +145,6 @@ vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
-vim.keymap.set('n', '<leader>ps', function()
-    require('telescope.builtin').grep_string({ search = vim.fn.input("Grep > ") })
-end)
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`

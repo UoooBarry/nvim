@@ -14,6 +14,11 @@ local function is_less_than_2_7(version)
     local major, minor = version:match("(%d+)%.(%d+)")
     major = tonumber(major)
     minor = tonumber(minor)
+
+    if not major or not minor then
+        return false
+    end
+
     return major < 2 or (major == 2 and minor < 7)
 end
 
