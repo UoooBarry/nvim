@@ -10,11 +10,6 @@ vim.api.nvim_set_keymap('n', '<CR>', ':nohlsearch<CR>', { noremap = true, silent
 --     vim.cmd('silent! !github ' .. get_git_root())
 -- end, { desc = '[G]ithub [D]esktop', silent = true })
 
--- linter quick fix
-vim.keymap.set('n', '<leader>lf', function()
-    vim.cmd('Format')
-end, { noremap = true, silent = true })
-
 vim.keymap.set('n', '<leader>F', ':Ag<space>', { noremap = true, silent = true })
 
 -- format
@@ -91,3 +86,15 @@ end
 -- move key up and down
 vim.keymap.set("v", "J", ":m'>+1<cr>gv=gv", { noremap = true })
 vim.keymap.set("v", "K", ":m'<-2<cr>gv=gv", { noremap = true })
+
+local function copy_relative_dir()
+    local cwd      = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+    local filepath = vim.fn.expand("%:p")
+    local relpath  = vim.fn.fnamemodify(filepath, ":.")
+    local result   = cwd .. "/" .. relpath
+    vim.fn.setreg('+', result)
+    print("Copied relative dir: " .. result)
+end
+vim.api.nvim_create_user_command("CopyPath", copy_relative_dir, {})
+
+vim.keymap.set("n", "<leader>cp", copy_relative_dir, { noremap = true })
