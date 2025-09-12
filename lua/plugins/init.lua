@@ -15,54 +15,6 @@ return {
         end
     },
 
-    -- Avante dependencies
-    { "stevearc/dressing.nvim" },
-    { "nvim-lua/plenary.nvim" },
-    { "MunifTanjim/nui.nvim" },
-    { "MeanderingProgrammer/render-markdown.nvim" },
-
-    -- Optional dependency
-    { "HakonHarnes/img-clip.nvim" },
-
-    -- Avante main plugin
-    {
-        "yetone/avante.nvim",
-        branch = "main",
-        build = "make",
-        dependencies = {
-            "stevearc/dressing.nvim",
-            "nvim-lua/plenary.nvim",
-            "MunifTanjim/nui.nvim",
-            "MeanderingProgrammer/render-markdown.nvim",
-            "HakonHarnes/img-clip.nvim",
-        },
-        config = function()
-            require("avante_lib").load()
-            require("avante").setup {
-                provider = "deepseek",
-                auto_suggestions_provider = "gemini_code",
-                providers = {
-                    deepseek = {
-                        __inherited_from = "openai",
-                        api_key_name = "DEEPSEEK_API_KEY",
-                        endpoint = "https://api.deepseek.com",
-                        model = "deepseek-coder",
-                        max_tokens = 4096,
-                    },
-                    gemini_code = {
-                        __inherited_from = "gemini",
-                        api_key_name = "GEMINI_API_KEY",
-                        model = "gemini-2.0-flash-thinking-exp-01-21",
-                        max_tokens = 4096,
-                    },
-                },
-                behaviour = {
-                    auto_suggestions = false,
-                },
-            }
-        end,
-    },
-
     -- Harpoon
     {
         "ThePrimeagen/harpoon",
@@ -172,4 +124,32 @@ return {
     {
         "mbbill/undotree"
     },
+
+    -- neocodeium
+    {
+        "monkoose/neocodeium",
+        event = "VeryLazy",
+        config = function()
+            local neocodeium = require("neocodeium")
+            neocodeium.setup()
+            vim.keymap.set("i", "<A-f>", function()
+                require("neocodeium").accept()
+            end)
+            vim.keymap.set("i", "<A-w>", function()
+                require("neocodeium").accept_word()
+            end)
+            vim.keymap.set("i", "<A-a>", function()
+                require("neocodeium").accept_line()
+            end)
+            vim.keymap.set("i", "<A-e>", function()
+                require("neocodeium").cycle_or_complete()
+            end)
+            vim.keymap.set("i", "<A-r>", function()
+                require("neocodeium").cycle_or_complete(-1)
+            end)
+            vim.keymap.set("i", "<A-c>", function()
+                require("neocodeium").clear()
+            end)
+        end,
+    }
 }
