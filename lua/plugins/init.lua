@@ -131,7 +131,16 @@ return {
         event = "VeryLazy",
         config = function()
             local neocodeium = require("neocodeium")
-            neocodeium.setup()
+            local filter_filetypes = { 'text' }
+            neocodeium.setup({
+                filter = function (bufnr)
+                    if not vim.tbl_contains(filter_filetypes, vim.api.nvim_get_option_value('filetype',  { buf = bufnr})) then
+                        return true
+                    end
+
+                    return false
+                end
+            })
             vim.keymap.set("i", "<A-f>", function()
                 require("neocodeium").accept()
             end)
