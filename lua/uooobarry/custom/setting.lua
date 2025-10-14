@@ -3,13 +3,18 @@
 
 -- if opened with a directory as argument, set it as cwd
 local arg = vim.fn.argv(0)
-if arg and vim.fn.isdirectory(arg) == 1 then
-  vim.cmd('cd ' .. arg)
+if arg and arg:match("^oil://(.+)") then
+    -- Extract the filesystem path from oil:// URL
+    local dir = arg:match("^oil://(.+)")
+    if dir and vim.fn.isdirectory(dir) == 1 then
+        vim.cmd('cd ' .. dir)
+        vim.cmd('Oil ' .. dir)
+    end
+elseif arg and vim.fn.isdirectory(arg) == 1 then
+    -- Fallback for non-oil:// arguments
+    vim.cmd('cd ' .. arg)
+    vim.cmd('Oil ' .. arg)
 end
-vim.g.netrw_keepdir = 0
-vim.g.netrw_localcopycmd = '/bin/cp'
-vim.g.netrw_localcopycmdopt = '-a'
-vim.g.netrw_localmovecmd = 'mv'
 
 -- Set highlight on search
 vim.o.hlsearch = true
@@ -47,9 +52,9 @@ vim.g.blamer_enabled = true -- enable git blamer
 vim.opt.laststatus = 3
 
 vim.diagnostic.config({
-  virtual_text = true,       -- 行内显示诊断信息
-  signs = true,              -- 左边的诊断图标
-  underline = true,          -- 下划线高亮
-  update_in_insert = false,
-  severity_sort = true,
+    virtual_text = true, -- 行内显示诊断信息
+    signs = true,        -- 左边的诊断图标
+    underline = true,    -- 下划线高亮
+    update_in_insert = false,
+    severity_sort = true,
 })

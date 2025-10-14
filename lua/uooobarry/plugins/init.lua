@@ -60,7 +60,7 @@ return {
     { 'nvim-tree/nvim-web-devicons' },
     {
         'nvim-telescope/telescope.nvim',
-        branch = '0.1.x',
+        tag = '0.1.x',
         dependencies = { 'nvim-lua/plenary.nvim' }
     },
     {
@@ -133,8 +133,8 @@ return {
             local neocodeium = require("neocodeium")
             local filter_filetypes = { 'text' }
             neocodeium.setup({
-                filter = function (bufnr)
-                    if not vim.tbl_contains(filter_filetypes, vim.api.nvim_get_option_value('filetype',  { buf = bufnr})) then
+                filter = function(bufnr)
+                    if not vim.tbl_contains(filter_filetypes, vim.api.nvim_get_option_value('filetype', { buf = bufnr })) then
                         return true
                     end
 
@@ -160,5 +160,16 @@ return {
                 require("neocodeium").clear()
             end)
         end,
+    },
+
+    -- oil.nvim
+    {
+        'stevearc/oil.nvim',
+        opts = {},
+        dependencies = { { "nvim-mini/mini.icons", opts = {} } },
+        lazy = false,
+        config = function()
+            require("oil").setup()
+        end
     }
 }

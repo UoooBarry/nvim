@@ -63,7 +63,7 @@ vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:lis
 --     { desc = "Open harpoon window" })
 
 -- Ex
-vim.keymap.set("n", "<leader>E", ":Ex<cr>", { noremap = true })
+vim.keymap.set("n", "<leader>E", "<CMD>Oil<CR>", { noremap = true })
 
 for i = 1, 5 do
     vim.keymap.set("n", string.format("<leader>%d", i), function() harpoon:list():select(i) end)
