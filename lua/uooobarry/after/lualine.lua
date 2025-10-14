@@ -41,8 +41,15 @@ require('lualine').setup {
 
                     return luacodeium
                 end,
-                color = { fg = '#9BE09A' },
-                cond = require("neocodeium").is_enabled,
+                color = { fg = '#9BE094' },
+                cond = function()
+                    local neocodeium = require("neocodeium")
+                    local status, _ = neocodeium.get_status()
+
+                    if status == 0 then
+                        return true
+                    end
+                end,
             },
         },
         lualine_y = { 'progress' },

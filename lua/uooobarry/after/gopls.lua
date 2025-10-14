@@ -1,5 +1,5 @@
-require('lspconfig').gopls.setup({
-  on_attach = function(client, bufnr)
+vim.lsp.config("gopls", {
+  on_attach = function(_, bufnr)
     -- Enable formatting on save
     vim.api.nvim_buf_set_option(bufnr, 'formatexpr', 'v:lua.vim.lsp.formatexpr()')
     vim.api.nvim_create_autocmd("BufWritePre", {

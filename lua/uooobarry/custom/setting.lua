@@ -6,6 +6,10 @@ local arg = vim.fn.argv(0)
 if arg and vim.fn.isdirectory(arg) == 1 then
   vim.cmd('cd ' .. arg)
 end
+vim.g.netrw_keepdir = 0
+vim.g.netrw_localcopycmd = '/bin/cp'
+vim.g.netrw_localcopycmdopt = '-a'
+vim.g.netrw_localmovecmd = 'mv'
 
 -- Set highlight on search
 vim.o.hlsearch = true

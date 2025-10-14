@@ -25,7 +25,7 @@ end
 local ruby_version = get_ruby_version()
 
 if ruby_version and is_less_than_2_7(ruby_version) then
-    lspconfig.solargraph.setup({
+    vim.lsp.config("solargraph", {
         cmd = { "/Users/barry/.rbenv/shims/solargraph", "stdio" },
         settings = {
             solargraph = {
@@ -34,5 +34,5 @@ if ruby_version and is_less_than_2_7(ruby_version) then
         }
     })
 else
-    lspconfig.ruby_lsp.setup({})
+    vim.lsp.config("ruby_lsp", {})
 end
