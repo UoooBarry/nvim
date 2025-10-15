@@ -33,8 +33,6 @@ return {
         }
     },
 
-    { 'dgox16/oldworld.nvim' },
-
     -- Autocompletion
     {
         'hrsh7th/nvim-cmp',
@@ -95,15 +93,11 @@ return {
     { 'APZelos/blamer.nvim' },
 
     -- UI Enhancements
-    { 'navarasu/onedark.nvim' },
     { 'nvim-lualine/lualine.nvim' },
-    { 'numToStr/Comment.nvim' },
 
     -- Themes
     { "catppuccin/nvim",          name = "catppuccin" },
     { "rose-pine/neovim",         name = "rose-pine" },
-    { 'AlexvZyl/nordic.nvim' },
-    { 'Yazeed1s/minimal.nvim' },
 
     -- Keep cursor
     {
@@ -169,7 +163,18 @@ return {
         dependencies = { { "nvim-mini/mini.icons", opts = {} } },
         lazy = false,
         config = function()
-            require("oil").setup()
+            CustomOilBar = function()
+                local path = vim.fn.expand "%"
+                path = path:gsub("oil://", "")
+
+                return "  " .. vim.fn.fnamemodify(path, ":.")
+            end
+
+            require("oil").setup({
+                win_options = {
+                    winbar = "%{v:lua.CustomOilBar()}",
+                },
+            })
         end
     }
 }
