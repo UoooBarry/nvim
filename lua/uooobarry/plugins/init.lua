@@ -71,9 +71,6 @@ return {
         dependencies = { "nvim-telescope/telescope.nvim" }
     },
 
-    -- Terminal
-    { "numToStr/FTerm.nvim" },
-
     -- Dashboard
     {
         'nvimdev/dashboard-nvim',

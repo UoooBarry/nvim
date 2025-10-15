@@ -1,5 +1,3 @@
-local lspconfig = require("lspconfig")
-
 local function get_ruby_version()
     local handle = io.popen("ruby -e 'print RUBY_VERSION'")
     if handle then
@@ -33,6 +31,8 @@ if ruby_version and is_less_than_2_7(ruby_version) then
             }
         }
     })
+    vim.lsp.enable("solargraph")
 else
     vim.lsp.config("ruby_lsp", {})
+    vim.lsp.enable("ruby_lsp")
 end
